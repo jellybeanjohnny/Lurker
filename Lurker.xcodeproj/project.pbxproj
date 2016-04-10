@@ -154,12 +154,11 @@
 		C96E5BED1C8D093B0039FB2D /* Lurker */ = {
 			isa = PBXGroup;
 			children = (
+				C99E36B41CBB12B600DE858E /* App Delegate */,
 				C99E36AC1CBB08C000DE858E /* Constants */,
 				C99E36A61CBB075300DE858E /* Plist */,
 				C94C38ED1CAD874E009D5C46 /* Reddit API Wrapper */,
 				C90FF3591CAADB8200740E08 /* OAuth */,
-				C96E5BF11C8D093B0039FB2D /* AppDelegate.h */,
-				C96E5BF21C8D093B0039FB2D /* AppDelegate.m */,
 				C96E5BF41C8D093B0039FB2D /* ViewController.h */,
 				C96E5BF51C8D093B0039FB2D /* ViewController.m */,
 				C96E5BF71C8D093B0039FB2D /* Main.storyboard */,
@@ -214,6 +213,15 @@
 				C99E36AE1CBB08E200DE858E /* Constants.m */,
 			);
 			name = Constants;
+			sourceTree = "<group>";
+		};
+		C99E36B41CBB12B600DE858E /* App Delegate */ = {
+			isa = PBXGroup;
+			children = (
+				C96E5BF11C8D093B0039FB2D /* AppDelegate.h */,
+				C96E5BF21C8D093B0039FB2D /* AppDelegate.m */,
+			);
+			name = "App Delegate";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
