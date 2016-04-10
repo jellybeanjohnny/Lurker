@@ -21,8 +21,8 @@
 		C96E5C261C8DAC210039FB2D /* OAuthManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C96E5C251C8DAC210039FB2D /* OAuthManager.m */; };
 		C99E36A51CBAE9D500DE858E /* KeychainService.m in Sources */ = {isa = PBXBuildFile; fileRef = C99E36A41CBAE9D500DE858E /* KeychainService.m */; };
 		C99E36A91CBB076200DE858E /* PlistManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C99E36A81CBB076200DE858E /* PlistManager.m */; };
-		C99E36AB1CBB07A800DE858E /* PrivateKeys.plist in Resources */ = {isa = PBXBuildFile; fileRef = C99E36AA1CBB07A800DE858E /* PrivateKeys.plist */; };
 		C99E36AF1CBB08E200DE858E /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = C99E36AE1CBB08E200DE858E /* Constants.m */; };
+		C99E36B31CBB11D700DE858E /* PrivateKeys.plist in Resources */ = {isa = PBXBuildFile; fileRef = C99E36B21CBB11D700DE858E /* PrivateKeys.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,9 +69,9 @@
 		C99E36A41CBAE9D500DE858E /* KeychainService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeychainService.m; sourceTree = "<group>"; };
 		C99E36A71CBB076200DE858E /* PlistManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlistManager.h; sourceTree = "<group>"; };
 		C99E36A81CBB076200DE858E /* PlistManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlistManager.m; sourceTree = "<group>"; };
-		C99E36AA1CBB07A800DE858E /* PrivateKeys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = PrivateKeys.plist; sourceTree = "<group>"; };
 		C99E36AD1CBB08E200DE858E /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		C99E36AE1CBB08E200DE858E /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
+		C99E36B21CBB11D700DE858E /* PrivateKeys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = PrivateKeys.plist; path = Lurker/PrivateKeys.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +133,7 @@
 		C96E5BE21C8D093B0039FB2D = {
 			isa = PBXGroup;
 			children = (
+				C99E36B21CBB11D700DE858E /* PrivateKeys.plist */,
 				C96E5BED1C8D093B0039FB2D /* Lurker */,
 				C96E5C071C8D093B0039FB2D /* LurkerTests */,
 				C96E5C121C8D093C0039FB2D /* LurkerUITests */,
@@ -202,7 +203,6 @@
 			children = (
 				C99E36A71CBB076200DE858E /* PlistManager.h */,
 				C99E36A81CBB076200DE858E /* PlistManager.m */,
-				C99E36AA1CBB07A800DE858E /* PrivateKeys.plist */,
 			);
 			name = Plist;
 			sourceTree = "<group>";
@@ -321,7 +321,7 @@
 			files = (
 				C96E5BFE1C8D093B0039FB2D /* LaunchScreen.storyboard in Resources */,
 				C96E5BFB1C8D093B0039FB2D /* Assets.xcassets in Resources */,
-				C99E36AB1CBB07A800DE858E /* PrivateKeys.plist in Resources */,
+				C99E36B31CBB11D700DE858E /* PrivateKeys.plist in Resources */,
 				C96E5BF91C8D093B0039FB2D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
