@@ -10,4 +10,7 @@
 
 @interface Constants : NSObject
 
+#pragma mark - Reddit
+extern NSString *const kRedditClientIdKey;
+
 @end

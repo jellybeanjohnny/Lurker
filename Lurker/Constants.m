@@ -10,4 +10,7 @@
 
 @implementation Constants
 
+#pragma mark - Reddit
+NSString *const kRedditClientIdKey;
+
 @end

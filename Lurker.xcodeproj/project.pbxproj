@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C90FF35B1CAADD3000740E08 /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C90FF35A1CAADD3000740E08 /* SafariServices.framework */; };
+		C92F1EE51CB1971400CC5E26 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C92F1EE41CB1971400CC5E26 /* Security.framework */; };
+		C94C38F01CAD8779009D5C46 /* RedditWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = C94C38EF1CAD8779009D5C46 /* RedditWrapper.m */; };
 		C96E5BF01C8D093B0039FB2D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C96E5BEF1C8D093B0039FB2D /* main.m */; };
 		C96E5BF31C8D093B0039FB2D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C96E5BF21C8D093B0039FB2D /* AppDelegate.m */; };
 		C96E5BF61C8D093B0039FB2D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C96E5BF51C8D093B0039FB2D /* ViewController.m */; };
@@ -15,6 +18,11 @@
 		C96E5BFE1C8D093B0039FB2D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C96E5BFC1C8D093B0039FB2D /* LaunchScreen.storyboard */; };
 		C96E5C091C8D093B0039FB2D /* LurkerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C96E5C081C8D093B0039FB2D /* LurkerTests.m */; };
 		C96E5C141C8D093C0039FB2D /* LurkerUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = C96E5C131C8D093C0039FB2D /* LurkerUITests.m */; };
+		C96E5C261C8DAC210039FB2D /* OAuthManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C96E5C251C8DAC210039FB2D /* OAuthManager.m */; };
+		C99E36A51CBAE9D500DE858E /* KeychainService.m in Sources */ = {isa = PBXBuildFile; fileRef = C99E36A41CBAE9D500DE858E /* KeychainService.m */; };
+		C99E36A91CBB076200DE858E /* PlistManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C99E36A81CBB076200DE858E /* PlistManager.m */; };
+		C99E36AB1CBB07A800DE858E /* PrivateKeys.plist in Resources */ = {isa = PBXBuildFile; fileRef = C99E36AA1CBB07A800DE858E /* PrivateKeys.plist */; };
+		C99E36AF1CBB08E200DE858E /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = C99E36AE1CBB08E200DE858E /* Constants.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +43,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C90FF35A1CAADD3000740E08 /* SafariServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SafariServices.framework; path = System/Library/Frameworks/SafariServices.framework; sourceTree = SDKROOT; };
+		C92F1EE41CB1971400CC5E26 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		C94C38EE1CAD8779009D5C46 /* RedditWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RedditWrapper.h; sourceTree = "<group>"; };
+		C94C38EF1CAD8779009D5C46 /* RedditWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RedditWrapper.m; sourceTree = "<group>"; };
 		C96E5BEB1C8D093B0039FB2D /* Lurker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lurker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C96E5BEF1C8D093B0039FB2D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		C96E5BF11C8D093B0039FB2D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -51,6 +63,15 @@
 		C96E5C0F1C8D093C0039FB2D /* LurkerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LurkerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C96E5C131C8D093C0039FB2D /* LurkerUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LurkerUITests.m; sourceTree = "<group>"; };
 		C96E5C151C8D093C0039FB2D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C96E5C241C8DAC210039FB2D /* OAuthManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAuthManager.h; sourceTree = "<group>"; };
+		C96E5C251C8DAC210039FB2D /* OAuthManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OAuthManager.m; sourceTree = "<group>"; };
+		C99E36A31CBAE9D500DE858E /* KeychainService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeychainService.h; sourceTree = "<group>"; };
+		C99E36A41CBAE9D500DE858E /* KeychainService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeychainService.m; sourceTree = "<group>"; };
+		C99E36A71CBB076200DE858E /* PlistManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlistManager.h; sourceTree = "<group>"; };
+		C99E36A81CBB076200DE858E /* PlistManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlistManager.m; sourceTree = "<group>"; };
+		C99E36AA1CBB07A800DE858E /* PrivateKeys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = PrivateKeys.plist; sourceTree = "<group>"; };
+		C99E36AD1CBB08E200DE858E /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		C99E36AE1CBB08E200DE858E /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +79,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C92F1EE51CB1971400CC5E26 /* Security.framework in Frameworks */,
+				C90FF35B1CAADD3000740E08 /* SafariServices.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +101,35 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C90FF3591CAADB8200740E08 /* OAuth */ = {
+			isa = PBXGroup;
+			children = (
+				C96E5C241C8DAC210039FB2D /* OAuthManager.h */,
+				C96E5C251C8DAC210039FB2D /* OAuthManager.m */,
+				C99E36A31CBAE9D500DE858E /* KeychainService.h */,
+				C99E36A41CBAE9D500DE858E /* KeychainService.m */,
+			);
+			name = OAuth;
+			sourceTree = "<group>";
+		};
+		C90FF35C1CAB489500740E08 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C92F1EE41CB1971400CC5E26 /* Security.framework */,
+				C90FF35A1CAADD3000740E08 /* SafariServices.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C94C38ED1CAD874E009D5C46 /* Reddit API Wrapper */ = {
+			isa = PBXGroup;
+			children = (
+				C94C38EE1CAD8779009D5C46 /* RedditWrapper.h */,
+				C94C38EF1CAD8779009D5C46 /* RedditWrapper.m */,
+			);
+			name = "Reddit API Wrapper";
+			sourceTree = "<group>";
+		};
 		C96E5BE21C8D093B0039FB2D = {
 			isa = PBXGroup;
 			children = (
@@ -101,6 +153,10 @@
 		C96E5BED1C8D093B0039FB2D /* Lurker */ = {
 			isa = PBXGroup;
 			children = (
+				C99E36AC1CBB08C000DE858E /* Constants */,
+				C99E36A61CBB075300DE858E /* Plist */,
+				C94C38ED1CAD874E009D5C46 /* Reddit API Wrapper */,
+				C90FF3591CAADB8200740E08 /* OAuth */,
 				C96E5BF11C8D093B0039FB2D /* AppDelegate.h */,
 				C96E5BF21C8D093B0039FB2D /* AppDelegate.m */,
 				C96E5BF41C8D093B0039FB2D /* ViewController.h */,
@@ -108,7 +164,6 @@
 				C96E5BF71C8D093B0039FB2D /* Main.storyboard */,
 				C96E5BFA1C8D093B0039FB2D /* Assets.xcassets */,
 				C96E5BFC1C8D093B0039FB2D /* LaunchScreen.storyboard */,
-				C96E5BFF1C8D093B0039FB2D /* Info.plist */,
 				C96E5BEE1C8D093B0039FB2D /* Supporting Files */,
 			);
 			path = Lurker;
@@ -117,6 +172,8 @@
 		C96E5BEE1C8D093B0039FB2D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				C96E5BFF1C8D093B0039FB2D /* Info.plist */,
+				C90FF35C1CAB489500740E08 /* Frameworks */,
 				C96E5BEF1C8D093B0039FB2D /* main.m */,
 			);
 			name = "Supporting Files";
@@ -138,6 +195,25 @@
 				C96E5C151C8D093C0039FB2D /* Info.plist */,
 			);
 			path = LurkerUITests;
+			sourceTree = "<group>";
+		};
+		C99E36A61CBB075300DE858E /* Plist */ = {
+			isa = PBXGroup;
+			children = (
+				C99E36A71CBB076200DE858E /* PlistManager.h */,
+				C99E36A81CBB076200DE858E /* PlistManager.m */,
+				C99E36AA1CBB07A800DE858E /* PrivateKeys.plist */,
+			);
+			name = Plist;
+			sourceTree = "<group>";
+		};
+		C99E36AC1CBB08C000DE858E /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				C99E36AD1CBB08E200DE858E /* Constants.h */,
+				C99E36AE1CBB08E200DE858E /* Constants.m */,
+			);
+			name = Constants;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -245,6 +321,7 @@
 			files = (
 				C96E5BFE1C8D093B0039FB2D /* LaunchScreen.storyboard in Resources */,
 				C96E5BFB1C8D093B0039FB2D /* Assets.xcassets in Resources */,
+				C99E36AB1CBB07A800DE858E /* PrivateKeys.plist in Resources */,
 				C96E5BF91C8D093B0039FB2D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -270,7 +347,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C99E36A91CBB076200DE858E /* PlistManager.m in Sources */,
+				C94C38F01CAD8779009D5C46 /* RedditWrapper.m in Sources */,
+				C96E5C261C8DAC210039FB2D /* OAuthManager.m in Sources */,
+				C99E36AF1CBB08E200DE858E /* Constants.m in Sources */,
 				C96E5BF61C8D093B0039FB2D /* ViewController.m in Sources */,
+				C99E36A51CBAE9D500DE858E /* KeychainService.m in Sources */,
 				C96E5BF31C8D093B0039FB2D /* AppDelegate.m in Sources */,
 				C96E5BF01C8D093B0039FB2D /* main.m in Sources */,
 			);
@@ -498,6 +580,7 @@
 				C96E5C1A1C8D093C0039FB2D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C96E5C1B1C8D093C0039FB2D /* Build configuration list for PBXNativeTarget "LurkerTests" */ = {
 			isa = XCConfigurationList;
@@ -506,6 +589,7 @@
 				C96E5C1D1C8D093C0039FB2D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C96E5C1E1C8D093C0039FB2D /* Build configuration list for PBXNativeTarget "LurkerUITests" */ = {
 			isa = XCConfigurationList;
@@ -514,6 +598,7 @@
 				C96E5C201C8D093C0039FB2D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
