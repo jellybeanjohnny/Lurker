@@ -154,6 +154,7 @@
 		C96E5BED1C8D093B0039FB2D /* Lurker */ = {
 			isa = PBXGroup;
 			children = (
+				C90FF35C1CAB489500740E08 /* Frameworks */,
 				C99E36B41CBB12B600DE858E /* App Delegate */,
 				C99E36AC1CBB08C000DE858E /* Constants */,
 				C99E36A61CBB075300DE858E /* Plist */,
@@ -162,7 +163,6 @@
 				C96E5BF41C8D093B0039FB2D /* ViewController.h */,
 				C96E5BF51C8D093B0039FB2D /* ViewController.m */,
 				C96E5BF71C8D093B0039FB2D /* Main.storyboard */,
-				C96E5BFA1C8D093B0039FB2D /* Assets.xcassets */,
 				C96E5BFC1C8D093B0039FB2D /* LaunchScreen.storyboard */,
 				C96E5BEE1C8D093B0039FB2D /* Supporting Files */,
 			);
@@ -172,8 +172,8 @@
 		C96E5BEE1C8D093B0039FB2D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				C96E5BFA1C8D093B0039FB2D /* Assets.xcassets */,
 				C96E5BFF1C8D093B0039FB2D /* Info.plist */,
-				C90FF35C1CAB489500740E08 /* Frameworks */,
 				C96E5BEF1C8D093B0039FB2D /* main.m */,
 			);
 			name = "Supporting Files";
