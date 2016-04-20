@@ -12,6 +12,7 @@
 #import "Constants.h"
 #import "PlistManager.h"
 
+
 static const NSString *REDIRECT_URI = @"myappscheme://response";
 
 @interface OAuthManager ()
@@ -19,6 +20,9 @@ static const NSString *REDIRECT_URI = @"myappscheme://response";
   NSURL *_authorizationURL;
   NSString *_state;
   NSError *_oAuthResponseError;
+  
+  UserContextType _userContextType;
+  
   
   __weak id <OAuthManagerDelegate> _delegate;
   
@@ -29,6 +33,7 @@ static const NSString *REDIRECT_URI = @"myappscheme://response";
 
 @implementation OAuthManager
 @synthesize authorizationURL = _authorizationURL;
+@synthesize userContextType = _userContextType;
 
 + (OAuthManager *)sharedManager
 {
@@ -46,8 +51,10 @@ static const NSString *REDIRECT_URI = @"myappscheme://response";
     return nil;
   }
   _oAuthResponseError = nil;
+  _authorizationURL = nil;
+  
   _state = [[NSUUID UUID] UUIDString];
-  _authorizationURL = _generateAuthURLForState(_state);
+  _userContextType = UserlessContext;
 
   return self;
 }
@@ -55,7 +62,8 @@ static const NSString *REDIRECT_URI = @"myappscheme://response";
 #pragma mark - User Authorization
 
 /**
- Generates the URL to send the user to log in to reddit. The URL includes the appropriate scope, duration, redirect uri, and client id
+ Generates the URL to send the user to log in to reddit. 
+ The URL includes the appropriate scope, duration, redirect uri, and client id
  for this application
  */
 NSURL * _generateAuthURLForState(NSString *state)
@@ -73,16 +81,6 @@ NSURL * _generateAuthURLForState(NSString *state)
   return [NSURL URLWithString:URLString];
 }
 
-/**
- Generates a string based on the following spec taken from the Reddit OAuth page:
- You should generate a unique, possibly random, string for each authorization request. This value will be returned to you when the user visits your REDIRECT_URI after allowing your app access - you should verify that it matches the one you sent. This ensures that only authorization requests you've started are ones you finish. (You may also use this value to, for example, tell your webserver what action to take after receiving the OAuth2 bearer token)
- */
-NSString * _hashString()
-{
-  int randomNumber = arc4random();
-  NSString *randomNumberString = [NSString stringWithFormat:@"%d", randomNumber];
-  return [NSString stringWithFormat:@"%lu", (unsigned long)randomNumberString.hash];
-}
 
 /**
  @abstract Parses the response reddit for a URL which includes the code to receive an access token
@@ -107,7 +105,7 @@ NSString * _hashString()
 - (void)_requestAuthTokenForCode:(NSString *)code
 {
   [self _postRequestForTokenWithBodyString:[NSString stringWithFormat:@"grant_type=authorization_code&code=%@&redirect_uri=%@",
-                                            code, REDIRECT_URI]];
+                                            code, REDIRECT_URI] block:nil];
 }
 
 /**
@@ -115,16 +113,31 @@ NSString * _hashString()
  */
 - (void)refreshToken
 {
-  KeychainService *keychainService = [[KeychainService alloc] init];
-  NSString *token = [keychainService loadTokenForType:REFRESH_TOKEN];
-  // Needs to already have something in need of refresh in the first place
-  if (!token ) {
-    NSLog(@"Refresh Token is nil, aborting refresh procedure.");
-    return;
+  [self refreshTokenWithBlock:nil];
+}
+
+- (void)refreshTokenWithBlock:(void(^)(BOOL succeeded))completionHandler
+{
+  if (_userContextType == ValidUserContext ) {
+    KeychainService *keychainService = [[KeychainService alloc] init];
+    NSString *token = [keychainService loadTokenForType:REFRESH_TOKEN];
+    [self _postRequestForTokenWithBodyString:[NSString stringWithFormat:@"grant_type=refresh_token&refresh_token=%@",
+                                              token] block:^(BOOL succeeded) {
+      
+      if (completionHandler) {
+        if (succeeded) completionHandler(YES);
+        else completionHandler(NO);
+      }
+    }];
   }
-  
-  [self _postRequestForTokenWithBodyString:[NSString stringWithFormat:@"grant_type=refresh_token&refresh_token=%@",
-                                            token]];
+  else {
+    [self startForUserlessContextWithBlock:^(BOOL succeeded) {
+      if (completionHandler) {
+        if (succeeded) completionHandler(YES);
+        else completionHandler(NO);
+      }
+    }];
+  }
 }
 
 
@@ -132,7 +145,7 @@ NSString * _hashString()
  @abstract Sends a POST request for an access token for the specified bodyString
  @param bodyString A string to be encoded as the HTTP Body for the POST request. Should either be for a normal access token or a refresh token
  */
-- (void)_postRequestForTokenWithBodyString:(NSString *)bodyString
+- (void)_postRequestForTokenWithBodyString:(NSString *)bodyString block:(void(^)(BOOL succeeded))completionHandler
 {
   NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:@"https://www.reddit.com/api/v1/access_token"]];
   NSString *loginString = [NSString stringWithFormat:@"%@:%@", plistObjectForKey(kRedditClientIdKey), @""];
@@ -146,10 +159,16 @@ NSString * _hashString()
   NSURLSessionDataTask *task = [[NSURLSession sharedSession] dataTaskWithRequest:request
    completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
      if (!error) {
-       [self _parseAuthTokenResponse:data];
+       [self _parseAuthTokenResponse:data succeeded:^(BOOL succeeded) {
+         if (completionHandler) {
+           if (succeeded) completionHandler(YES);
+           else completionHandler(NO);
+         }
+       }];
      }
      else {
        // handle error
+       if (completionHandler) completionHandler(NO);
        NSLog(@"Error completing POST request for OAuth Token: %@", error);
      }
    }];
@@ -159,7 +178,7 @@ NSString * _hashString()
 /**
  @abstract Parses the response from the access token POST request
  */
-- (void)_parseAuthTokenResponse:(NSData *)response
+- (void)_parseAuthTokenResponse:(NSData *)response succeeded:(void(^)(BOOL succeeded))completionBlock
 {
   NSError *jsonError;
   NSDictionary *jsonResponse = [NSJSONSerialization JSONObjectWithData:response
@@ -169,9 +188,11 @@ NSString * _hashString()
   NSLog(@"Here's the JSON Response for the Auth Token request:\n%@", jsonResponse);
   
   if ([jsonResponse objectForKey:@"error"]) {
+    NSLog(@"There's been error loading JSON!");
     NSString *errorString = [jsonResponse objectForKey:@"error"];
     _oAuthResponseError = [NSError errorWithDomain:@"OAuthResponseError" code:[errorString integerValue] userInfo:nil];
     [self _alertDelegateForOAuthCompletion:NO];
+    if (completionBlock) completionBlock(NO);
   }
   else {
     _oAuthResponseError = nil;
@@ -184,7 +205,9 @@ NSString * _hashString()
     // Store the refresh token on the keychain
     NSString *refreshToken = [jsonResponse objectForKey:@"refresh_token"];
     if (refreshToken) [keychainService saveToken:refreshToken withType:REFRESH_TOKEN];
+
     [self _alertDelegateForOAuthCompletion:YES];
+    if (completionBlock) completionBlock(YES);
   }
 }
 
@@ -192,13 +215,16 @@ NSString * _hashString()
 
 /**
  @abstract Sends POST request for OAuth with a userless context
- @discussion This will be used when the user first opens the app before logging in
  */
-- (void)postRequestForApplicationOnlyOAuth
+- (void)_postRequestForApplicationOnlyOAuthWithBlock:(void(^)(BOOL completed))completionHandler
 {
   NSString *appOnlyBodyString = [NSString stringWithFormat:@"grant_type=https://oauth.reddit.com/grants/installed_client&device_id=%@", _state];
-  [self _postRequestForTokenWithBodyString:appOnlyBodyString];
-  
+  [self _postRequestForTokenWithBodyString:appOnlyBodyString block:^(BOOL succeeded) {
+    if (completionHandler) {
+      if (succeeded) completionHandler(YES);
+      else completionHandler(NO);
+    }
+  }];
 }
 
 
@@ -215,8 +241,38 @@ NSString * _hashString()
   }
 }
 
+#pragma mark - Starting OAuth for Userless and Valid User contexts
+
+- (void)startForUserContext
+{
+  _userContextType = ValidUserContext;
+  _authorizationURL = _generateAuthURLForState(_state);
+  
+}
+
+- (void)startForUserlessContext
+{
+  [self startForUserlessContextWithBlock:nil];
+}
+
+- (void)startForUserlessContextWithBlock:(void(^)(BOOL succeeded))completionhandler
+{
+  _userContextType = UserlessContext;
+  [self _postRequestForApplicationOnlyOAuthWithBlock:^(BOOL completed) {
+    if (completionhandler) {
+      if (completed) completionhandler(YES);
+      else completionhandler(NO);
+    }
+  }];
+}
+
 
 @end
+
+
+
+
+
 
 
 

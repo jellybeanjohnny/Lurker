@@ -8,6 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
+typedef enum UserContextType_
+{
+  UserlessContext,
+  ValidUserContext
+} UserContextType;
+
 @protocol OAuthManagerDelegate <NSObject>
 @optional
 /**
@@ -31,10 +37,14 @@
 + (OAuthManager *)sharedManager;
 
 /**
- @abstract Sends POST request for OAuth with a userless context
- @discussion This will be used when the user first opens the app before logging in
+ @abstract Starts the OAuth process for a user context.
  */
-- (void)postRequestForApplicationOnlyOAuth;
+- (void)startForUserContext;
+
+/**
+ @abstract Starts the OAuth Process for a userless context.
+ */
+- (void)startForUserlessContext;
 
 /**
  @abstract Parses the response reddit for a URL which includes the code to receive an access token
@@ -42,7 +52,7 @@
 - (BOOL)parseAuthorizationResponseForURL:(NSURL *)url;
 
 /**
- Sends a POST request for another token and refresh token
+ Refreshes the token depending on the current user context. 
  */
 - (void)refreshToken;
 
@@ -50,6 +60,8 @@
  The URL to allow/deny access for this user
  */
 @property (nonatomic, readonly) NSURL *authorizationURL;
+
+@property (nonatomic, readonly) UserContextType userContextType;
 
 @property (nonatomic, weak) id<OAuthManagerDelegate> delegate;
 

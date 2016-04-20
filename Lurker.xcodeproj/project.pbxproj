@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		C90FF35B1CAADD3000740E08 /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C90FF35A1CAADD3000740E08 /* SafariServices.framework */; };
 		C92F1EE51CB1971400CC5E26 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C92F1EE41CB1971400CC5E26 /* Security.framework */; };
-		C94C38F01CAD8779009D5C46 /* RedditWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = C94C38EF1CAD8779009D5C46 /* RedditWrapper.m */; };
+		C968926C1CC43E1D008FB777 /* RedditAPIService.m in Sources */ = {isa = PBXBuildFile; fileRef = C968926B1CC43E1D008FB777 /* RedditAPIService.m */; };
 		C96E5BF01C8D093B0039FB2D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C96E5BEF1C8D093B0039FB2D /* main.m */; };
 		C96E5BF31C8D093B0039FB2D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C96E5BF21C8D093B0039FB2D /* AppDelegate.m */; };
 		C96E5BF61C8D093B0039FB2D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C96E5BF51C8D093B0039FB2D /* ViewController.m */; };
@@ -45,8 +45,8 @@
 /* Begin PBXFileReference section */
 		C90FF35A1CAADD3000740E08 /* SafariServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SafariServices.framework; path = System/Library/Frameworks/SafariServices.framework; sourceTree = SDKROOT; };
 		C92F1EE41CB1971400CC5E26 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
-		C94C38EE1CAD8779009D5C46 /* RedditWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RedditWrapper.h; sourceTree = "<group>"; };
-		C94C38EF1CAD8779009D5C46 /* RedditWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RedditWrapper.m; sourceTree = "<group>"; };
+		C968926A1CC43E1D008FB777 /* RedditAPIService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RedditAPIService.h; sourceTree = "<group>"; };
+		C968926B1CC43E1D008FB777 /* RedditAPIService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RedditAPIService.m; sourceTree = "<group>"; };
 		C96E5BEB1C8D093B0039FB2D /* Lurker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lurker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C96E5BEF1C8D093B0039FB2D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		C96E5BF11C8D093B0039FB2D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -121,13 +121,13 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		C94C38ED1CAD874E009D5C46 /* Reddit API Wrapper */ = {
+		C94C38ED1CAD874E009D5C46 /* Reddit API */ = {
 			isa = PBXGroup;
 			children = (
-				C94C38EE1CAD8779009D5C46 /* RedditWrapper.h */,
-				C94C38EF1CAD8779009D5C46 /* RedditWrapper.m */,
+				C968926A1CC43E1D008FB777 /* RedditAPIService.h */,
+				C968926B1CC43E1D008FB777 /* RedditAPIService.m */,
 			);
-			name = "Reddit API Wrapper";
+			name = "Reddit API";
 			sourceTree = "<group>";
 		};
 		C96E5BE21C8D093B0039FB2D = {
@@ -158,7 +158,7 @@
 				C99E36B41CBB12B600DE858E /* App Delegate */,
 				C99E36AC1CBB08C000DE858E /* Constants */,
 				C99E36A61CBB075300DE858E /* Plist */,
-				C94C38ED1CAD874E009D5C46 /* Reddit API Wrapper */,
+				C94C38ED1CAD874E009D5C46 /* Reddit API */,
 				C90FF3591CAADB8200740E08 /* OAuth */,
 				C96E5BF41C8D093B0039FB2D /* ViewController.h */,
 				C96E5BF51C8D093B0039FB2D /* ViewController.m */,
@@ -356,10 +356,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				C99E36A91CBB076200DE858E /* PlistManager.m in Sources */,
-				C94C38F01CAD8779009D5C46 /* RedditWrapper.m in Sources */,
 				C96E5C261C8DAC210039FB2D /* OAuthManager.m in Sources */,
 				C99E36AF1CBB08E200DE858E /* Constants.m in Sources */,
 				C96E5BF61C8D093B0039FB2D /* ViewController.m in Sources */,
+				C968926C1CC43E1D008FB777 /* RedditAPIService.m in Sources */,
 				C99E36A51CBAE9D500DE858E /* KeychainService.m in Sources */,
 				C96E5BF31C8D093B0039FB2D /* AppDelegate.m in Sources */,
 				C96E5BF01C8D093B0039FB2D /* main.m in Sources */,

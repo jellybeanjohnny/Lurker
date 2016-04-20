@@ -11,6 +11,6 @@
 @implementation Constants
 
 #pragma mark - Reddit
-NSString *const kRedditClientIdKey;
+NSString *const kRedditClientIdKey = @"Reddit Client Id";
 
 @end
